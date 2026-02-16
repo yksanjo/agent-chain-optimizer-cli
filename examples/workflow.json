@@ -1,0 +1,57 @@
+{
+  "id": "sample-workflow-1",
+  "name": "Sample Multi-Agent Workflow",
+  "simulate": true,
+  "agents": [
+    {
+      "id": "agent-1",
+      "name": "Data Fetcher",
+      "costPerToken": {
+        "inputTokenCost": 0.001,
+        "outputTokenCost": 0.002
+      }
+    },
+    {
+      "id": "agent-2",
+      "name": "Processor",
+      "costPerToken": {
+        "inputTokenCost": 0.0015,
+        "outputTokenCost": 0.003
+      }
+    },
+    {
+      "id": "agent-3",
+      "name": "Analyzer",
+      "costPerToken": {
+        "inputTokenCost": 0.002,
+        "outputTokenCost": 0.004
+      }
+    }
+  ],
+  "steps": [
+    {
+      "id": "step-1",
+      "agentId": "agent-1",
+      "agentName": "Data Fetcher",
+      "dependencies": [],
+      "inputTokens": 100,
+      "outputTokens": 500
+    },
+    {
+      "id": "step-2",
+      "agentId": "agent-2",
+      "agentName": "Processor",
+      "dependencies": ["step-1"],
+      "inputTokens": 500,
+      "outputTokens": 300
+    },
+    {
+      "id": "step-3",
+      "agentId": "agent-3",
+      "agentName": "Analyzer",
+      "dependencies": ["step-2"],
+      "inputTokens": 300,
+      "outputTokens": 200
+    }
+  ]
+}
